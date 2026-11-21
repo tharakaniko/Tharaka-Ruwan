@@ -2208,7 +2208,30 @@
       }
     }
 
-  </style>
+  
+    /* FINAL MOBILE PERFORMANCE PASS: keep interactions, remove continuous GPU-heavy decoration. */
+    @media (max-width: 768px), (pointer: coarse) {
+      .mobile-ambient { display: none !important; }
+      body::before { animation: none !important; filter: none !important; transform: none !important; }
+      .brand, .brand-logo-wrap, .neon-spin-box, .skill-face,
+      .skill-flip-scene.flipped .skill-face, .dialog-shell {
+        animation: none !important;
+      }
+      .brand-logo-wrap, .neon-spin-box, .skill-face, .dialog-shell {
+        background-attachment: scroll !important;
+      }
+      .neon-spin-box, .skill-face, .dialog-shell {
+        box-shadow: 0 5px 14px rgba(0,0,0,.16) !important;
+      }
+      .reveal-up { will-change: auto !important; }
+      .scroll-dark-vignette { display: none !important; }
+      nav, .sound-btn-floating, .back-to-top, .dialog-shell {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+      }
+    }
+
+</style>
 </head>
 <body class="preloader-active">
   <div id="introLoader" class="intro-loader" onclick="dismissLoader()">
@@ -3830,6 +3853,8 @@
       meteorCanvas.style.display = "none";
     }
     function updateScrollDarkness() {
+      // On touch devices keep scrolling free from per-frame decorative style updates.
+      if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
       const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
       document.documentElement.style.setProperty("--scroll-depth", ratio.toFixed(3));
