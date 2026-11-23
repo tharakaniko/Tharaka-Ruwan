@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Tharaka Ruwan | Creative Developer & Digital Creator</title>
   <meta name="description" content="Explore Tharaka Ruwan's creative portfolio: front-end web development, interactive experiences, digital design, subtitles, and custom creative projects." />
   <meta name="theme-color" content="#07041a" />
@@ -17,6 +17,11 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Poppins:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     @property --border-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @property --order-angle {
       syntax: "<angle>";
       initial-value: 0deg;
       inherits: false;
@@ -497,7 +502,7 @@
       display: none;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      transition: opacity 0.32s cubic-bezier(.22,1,.36,1), transform 0.32s cubic-bezier(.22,1,.36,1);
     }
 
     .page-view.active {
@@ -508,6 +513,7 @@
       opacity: 1;
       transform: translateY(0);
     }
+    @media (prefers-reduced-motion: reduce) { .page-view { transition: none !important; transform: none; } }
 
     .reveal-up {
       opacity: 0;
@@ -2231,6 +2237,148 @@
       }
     }
 
+
+
+    /* PROJECT SHOWCASE — responsive, self-contained portfolio case studies */
+    .project-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:end;margin:12px 0 28px}
+    .project-intro h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.15;margin:12px 0}
+    .project-intro p{color:var(--text-muted);max-width:680px}
+    .project-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .project-proof div{padding:14px;border:1px solid rgba(192,132,252,.2);border-radius:15px;background:rgba(17,9,36,.72)}
+    .project-proof strong{display:block;font:800 1.35rem var(--font-heading);color:#f5d0fe}
+    .project-proof span{font-size:.72rem;color:var(--text-muted)}
+    .project-filter-row{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}
+    .project-filter{border:1px solid rgba(192,132,252,.28);background:rgba(17,9,36,.82);color:var(--text-muted);padding:9px 15px;border-radius:999px;font:600 .8rem var(--font-body);cursor:pointer}
+    .project-filter.active{color:#fff;background:linear-gradient(120deg,#6d28d9,#9333ea);border-color:#d8b4fe;box-shadow:0 5px 18px rgba(168,85,247,.2)}
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .project-card{overflow:hidden;border:1px solid rgba(192,132,252,.2);border-radius:22px;background:linear-gradient(145deg,rgba(23,13,43,.94),rgba(7,7,20,.96));box-shadow:0 16px 42px rgba(0,0,0,.2);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    @media(hover:hover){.project-card:hover{transform:translateY(-5px);border-color:rgba(216,180,254,.62);box-shadow:0 22px 48px rgba(88,28,135,.22)}}
+    .project-preview{height:230px;padding:18px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate}
+    .project-preview:before,.project-preview:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);z-index:-1}
+    .project-preview:before{width:230px;height:230px;right:-45px;top:-100px;background:rgba(255,255,255,.13)}
+    .project-preview:after{width:190px;height:190px;left:-75px;bottom:-120px;background:rgba(255,255,255,.1)}
+    .preview-window{width:min(100%,390px);min-height:165px;border:1px solid rgba(255,255,255,.24);border-radius:14px;background:rgba(8,10,20,.78);box-shadow:0 18px 40px rgba(0,0,0,.3);padding:13px;color:white;backdrop-filter:blur(8px)}
+    .preview-top{display:flex;justify-content:space-between;align-items:center;font-size:.58rem;letter-spacing:.12em;opacity:.85;margin-bottom:15px}
+    .preview-dots{display:flex;gap:4px}.preview-dots i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.8}
+    .preview-headline{font:800 clamp(1.1rem,2.5vw,1.7rem)/1.1 var(--font-heading);max-width:260px;letter-spacing:-.04em}
+    .preview-sub{font-size:.58rem;opacity:.76;margin-top:7px;max-width:230px}
+    .preview-pills{display:flex;gap:5px;margin-top:13px}.preview-pills i{display:block;width:46px;height:13px;border-radius:5px;background:rgba(255,255,255,.2)}
+    .preview-bars{display:flex;align-items:end;gap:7px;height:62px;margin-top:10px}.preview-bars i{flex:1;border-radius:5px 5px 2px 2px;background:rgba(255,255,255,.65)}
+    .preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px}.preview-cards i{height:48px;border-radius:7px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16)}
+    .theme-aurora{background:linear-gradient(130deg,#d6b6a2,#7c514c 55%,#302c3a)}
+    .theme-north{background:linear-gradient(130deg,#8bc9c5,#1d5360 55%,#102b3c)}
+    .theme-pixel{background:linear-gradient(130deg,#ff8a55,#b32f63 55%,#391c59)}
+    .theme-field{background:linear-gradient(130deg,#e8d9ae,#77906b 55%,#344b3d)}
+    .theme-civic{background:linear-gradient(130deg,#a9c9ed,#345b8e 55%,#172b50)}
+    .theme-velora{background:linear-gradient(130deg,#f5b7d0,#8d4e8c 55%,#33254e)}
+    .project-card-body{padding:21px}
+    .project-card-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+    .project-category{font:600 .68rem var(--font-mono);letter-spacing:.08em;color:#d8b4fe;text-transform:uppercase}
+    .project-number{font:600 .68rem var(--font-mono);color:#9586b6}
+    .project-card h3{font-size:1.2rem;margin-bottom:8px}
+    .project-card p{color:var(--text-muted);font-size:.88rem;min-height:58px}
+    .project-tags{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0 18px}
+    .project-tags span{font-size:.68rem;padding:5px 9px;border:1px solid rgba(192,132,252,.2);border-radius:999px;color:#e9d5ff;background:rgba(168,85,247,.08)}
+    .project-open{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(192,132,252,.34);border-radius:12px;padding:11px 14px;background:rgba(168,85,247,.1);color:#fff;font:600 .85rem var(--font-body);cursor:pointer}
+    .project-open:hover{background:rgba(168,85,247,.2)}
+    .project-note{margin-top:26px;padding:18px 20px;border:1px solid rgba(74,222,128,.2);background:rgba(20,83,45,.12);border-radius:16px;color:#c9f5d8;font-size:.82rem}
+    .case-backdrop{position:fixed;inset:0;z-index:1500;background:rgba(2,1,8,.82);display:none;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+    .case-backdrop.active{display:flex}
+    .case-dialog{width:min(850px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid rgba(192,132,252,.38);border-radius:22px;background:#0d071c;box-shadow:0 25px 90px rgba(0,0,0,.55);padding:clamp(20px,4vw,34px);position:relative}
+    .case-close{position:sticky;top:0;float:right;width:38px;height:38px;border-radius:50%;border:1px solid rgba(192,132,252,.35);background:#1a1030;color:white;font-size:1.2rem;cursor:pointer;z-index:2}
+    .case-dialog h2{font-size:clamp(1.6rem,4vw,2.4rem);margin:12px 45px 10px 0;line-height:1.15}
+    .case-lead{color:var(--text-muted);font-size:.95rem;max-width:700px}
+    .case-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:24px 0}
+    .case-detail{padding:17px;border:1px solid rgba(192,132,252,.18);border-radius:14px;background:rgba(168,85,247,.06)}
+    .case-detail h4{font-size:.86rem;color:#e9d5ff;margin-bottom:7px}.case-detail p,.case-detail li{font-size:.82rem;color:var(--text-muted)}
+    .case-detail ul{padding-left:17px;display:grid;gap:5px}
+    .case-disclaimer{font-size:.76rem;color:#b8add6;border-top:1px solid rgba(192,132,252,.16);padding-top:15px}
+    @media(max-width:760px){.project-intro{grid-template-columns:1fr}.project-grid{grid-template-columns:1fr}.project-preview{height:210px}.project-card p{min-height:0}.case-detail-grid{grid-template-columns:1fr}}
+    @media(max-width:420px){.project-preview{height:185px;padding:12px}.preview-window{min-height:150px}.project-card-body{padding:17px}.project-proof div{padding:10px}.project-proof strong{font-size:1.1rem}.project-proof span{font-size:.65rem}}
+    @media(prefers-reduced-motion:reduce){.project-card,.project-open{transition:none}}
+
+
+    /* Samples hub and service-specific sample galleries */
+    .order-nav-link{position:relative!important;color:#d9ffe5!important;border:1px solid rgba(74,222,128,.48)!important;border-radius:999px;padding:9px 15px!important;box-shadow:0 0 8px rgba(34,197,94,.22),inset 0 0 8px rgba(34,197,94,.08);animation:orderGlow 3s ease-in-out infinite}
+    @keyframes orderGlow{0%,100%{box-shadow:0 0 6px rgba(34,197,94,.18),inset 0 0 6px rgba(34,197,94,.06)}50%{box-shadow:0 0 13px rgba(34,197,94,.38),0 0 22px rgba(34,197,94,.12),inset 0 0 9px rgba(34,197,94,.12)}}
+    .sample-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}
+    .sample-category-card{min-height:245px;text-align:left;padding:23px;border:1px solid rgba(192,132,252,.23);border-radius:21px;color:#fff;background:linear-gradient(145deg,rgba(25,15,48,.96),rgba(8,8,21,.98));cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;transition:transform .22s,border-color .22s,box-shadow .22s}
+    .sample-category-card:hover{transform:translateY(-5px);border-color:rgba(216,180,254,.65);box-shadow:0 18px 42px rgba(88,28,135,.2)}
+    .sample-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;background:rgba(168,85,247,.17);border:1px solid rgba(216,180,254,.24);margin-bottom:20px}
+    .sample-count{font:600 .65rem var(--font-mono);letter-spacing:.12em;color:#c4b5fd}
+    .sample-category-card h3{font-size:1.22rem;margin:7px 0}
+    .sample-category-card p{font-size:.86rem;color:var(--text-muted);line-height:1.65;margin-bottom:18px}
+    .sample-category-card b{margin-top:auto;color:#e9d5ff;font-size:.82rem}
+    .sample-design .sample-icon{background:rgba(244,114,182,.15);color:#fbcfe8}.sample-translation .sample-icon{background:rgba(45,212,191,.14);color:#99f6e4}.sample-data .sample-icon{background:rgba(96,165,250,.14);color:#bfdbfe}.sample-brand .sample-icon{background:rgba(251,191,36,.13);color:#fde68a}.sample-content .sample-icon{background:rgba(163,230,53,.13);color:#d9f99d}
+    .sample-items-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:26px 0}
+    .sample-item{border:1px solid rgba(192,132,252,.2);border-radius:18px;padding:22px;background:linear-gradient(145deg,rgba(23,13,43,.94),rgba(7,7,20,.96));}
+    .sample-item .sample-label{font:600 .66rem var(--font-mono);letter-spacing:.1em;color:#c4b5fd}
+    .sample-item h3{font-size:1.12rem;margin:9px 0}.sample-item p{font-size:.86rem;color:var(--text-muted);line-height:1.65}
+    .sample-item .sample-example{margin-top:14px;padding:14px;border-radius:12px;background:rgba(168,85,247,.08);border:1px solid rgba(192,132,252,.16);font-size:.82rem;line-height:1.65;color:#eee6ff;white-space:pre-wrap}
+    .sample-item .sample-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.sample-item .sample-meta span{font-size:.68rem;padding:5px 9px;border-radius:999px;background:rgba(168,85,247,.1);color:#e9d5ff;border:1px solid rgba(192,132,252,.18)}
+    @media(max-width:850px){.sample-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.sample-category-grid,.sample-items-grid{grid-template-columns:1fr}.sample-category-card{min-height:215px;padding:20px}}
+    @media(prefers-reduced-motion:reduce){.order-nav-link{animation:none}.sample-category-card{transition:none}}
+
+
+    /* Refined navigation, rotating dual-neon Order button and mobile readability. */
+    .order-nav-link {
+      isolation: isolate;
+      z-index: 0;
+      border: 1px solid rgba(74,222,128,.72) !important;
+      color: #eafff0 !important;
+      background: linear-gradient(135deg,rgba(8,42,29,.96),rgba(8,24,43,.96)) !important;
+      box-shadow: 0 0 12px rgba(34,197,94,.30), 0 0 16px rgba(56,189,248,.20), inset 0 0 10px rgba(74,222,128,.10);
+      animation: orderNeonPulse 2.8s ease-in-out infinite !important;
+    }
+    .order-nav-link::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -3px;
+      border-radius: inherit;
+      padding: 2px;
+      background: conic-gradient(from var(--order-angle,0deg), #22c55e, #38bdf8, #22c55e, #86efac, #38bdf8);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .95;
+      animation: orderRingSpin 4.5s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes orderRingSpin { to { --order-angle: 360deg; } }
+    @keyframes orderNeonPulse {
+      0%,100% { box-shadow: 0 0 10px rgba(34,197,94,.26),0 0 13px rgba(56,189,248,.18),inset 0 0 8px rgba(74,222,128,.08); }
+      50% { box-shadow: 0 0 17px rgba(34,197,94,.48),0 0 24px rgba(56,189,248,.34),inset 0 0 12px rgba(74,222,128,.15); }
+    }
+    @media (max-width: 768px) {
+      html { font-size: 16px !important; }
+      body { font-size: 1rem; line-height: 1.65; }
+      .container { padding-left: 14px; padding-right: 14px; }
+      p, li { font-size: 1rem; line-height: 1.7; }
+      .hero p, .section-header p { font-size: 1rem !important; }
+      .sample-category-card p, .sample-item p, .sample-item .sample-example { font-size: .94rem; }
+      .sample-item { padding: 20px; }
+      .project-card p { font-size: .96rem; }
+      .order-nav-link { box-shadow: 0 0 14px rgba(34,197,94,.34),0 0 18px rgba(56,189,248,.24) !important; }
+    }
+    @media (max-width: 420px) {
+      html { font-size: 16px !important; }
+      .container { padding-left: 12px; padding-right: 12px; }
+      .nav-links { gap: 8px !important; }
+      .nav-links a { font-size: .86rem !important; padding: 9px 12px !important; }
+      .hero p, .section-header p { font-size: .98rem !important; }
+    }
+    @media (max-width: 768px), (pointer: coarse) {
+      /* Keep scrolling and taps responsive on lower-powered phones. */
+      .order-nav-link::before { animation-duration: 7s; }
+      .order-nav-link { animation-duration: 4s !important; }
+      .sample-category-card, .project-card { transition-duration: .16s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .order-nav-link, .order-nav-link::before { animation: none !important; }
+    }
+
 </style>
 </head>
 <body class="preloader-active">
@@ -2281,10 +2429,11 @@
         <div class="brand" aria-label="THARAKA.RUWAN">THARAKA.RUWAN</div>
       </div>
       <div class="nav-links">
+        <a id="navWork" class="tap-sound order-nav-link" role="button" tabindex="0" onclick="openPage('work')">Order Now</a>
         <a id="navSkills" class="tap-sound" role="button" tabindex="0" onclick="openPage('skills')">Skills</a>
-        <a id="navWork" class="tap-sound" role="button" tabindex="0" onclick="openPage('work')">Order Now</a>
         <a id="navContact" class="tap-sound" role="button" tabindex="0" onclick="openPage('contact')">Contact Info</a>
         <a id="navRate" class="tap-sound" role="button" tabindex="0" onclick="openPage('rate')">Rate Us</a>
+        <a id="navSamples" class="tap-sound" role="button" tabindex="0" onclick="openPage('samples')">Samples</a>
         <a id="navProfile" class="tap-sound" role="button" tabindex="0" onclick="openPage('profile')">Profile Info</a>
       </div>
     </nav>
@@ -2310,6 +2459,9 @@
           <div class="btn-group">
             <button class="btn-neon tap-sound" type="button" onclick="openPage('work')">
               Explore 10 Work Packs
+            </button>
+            <button class="btn-ghost tap-sound" type="button" onclick="openPage('projects')">
+              View Project Portfolio
             </button>
             <button class="btn-ghost tap-sound" type="button" onclick="openPage('skills')">
               Explore 12 Skills
@@ -2874,6 +3026,72 @@
           <div id="customWarn" class="custom-warn"></div>
         </div>
       </div>
+    </section>
+
+
+    <section id="samplesView" class="page-view">
+      <div class="page-top-bar"><div class="section-header" style="margin:0"><span class="pill">WORK SHOWCASE</span><h2>My <span class="gradient-text">Samples</span></h2><p>Explore different kinds of work across websites, visual design, language support and organised data tasks.</p></div><button class="btn-ghost tap-sound" type="button" onclick="openPage('home')">← Back Home</button></div>
+      <div class="sample-category-grid">
+        <button class="sample-category-card sample-projects" onclick="openPage('projects')"><span class="sample-icon">⌘</span><span class="sample-count">06 CONCEPTS</span><h3>Projects</h3><p>Six separate website concepts with their own identity, layouts, features and case studies.</p><b>Explore projects ↗</b></button>
+        <button class="sample-category-card sample-design" onclick="openSampleCategory('design')"><span class="sample-icon">✦</span><span class="sample-count">VISUAL CREATION</span><h3>Graphic Design</h3><p>Logo directions, gaming thumbnails, social graphics and promotional visual concepts.</p><b>View design samples ↗</b></button>
+        <button class="sample-category-card sample-translation" onclick="openSampleCategory('translation')"><span class="sample-icon">文</span><span class="sample-count">LANGUAGE SUPPORT</span><h3>Translations & Subtitles</h3><p>Natural translations, subtitle cleanup, timing checks and readable caption formatting.</p><b>View language samples ↗</b></button>
+        <button class="sample-category-card sample-data" onclick="openSampleCategory('data')"><span class="sample-icon">▦</span><span class="sample-count">ACCURACY & ORDER</span><h3>Data Entry</h3><p>Structured spreadsheet entries, data cleanup, product listings and organised records.</p><b>View data samples ↗</b></button>
+        <button class="sample-category-card sample-brand" onclick="openSampleCategory('brand')"><span class="sample-icon">◈</span><span class="sample-count">DIGITAL BRANDING</span><h3>Logos & Thumbnails</h3><p>Distinct visual directions for creators, channels, gaming communities and small brands.</p><b>View branding samples ↗</b></button>
+        <button class="sample-category-card sample-content" onclick="openSampleCategory('content')"><span class="sample-icon">▤</span><span class="sample-count">CONTENT FORMATTING</span><h3>Document & Content Formatting</h3><p>Clean document layouts, neatly formatted text, product descriptions and content organisation.</p><b>View formatting samples ↗</b></button>
+      </div>
+      <div class="project-note">Sample showcase: The examples in this portfolio are self-created demonstrations of the services offered. They are not presented as paid client commissions or verified client results.</div>
+    </section>
+
+    <section id="sampleCategoryView" class="page-view">
+      <div class="page-top-bar"><div class="section-header" style="margin:0"><span class="pill" id="sampleCategoryEyebrow">SAMPLE COLLECTION</span><h2 id="sampleCategoryTitle">Samples</h2><p id="sampleCategoryIntro">Explore example work.</p></div><button class="btn-ghost tap-sound" type="button" onclick="openPage('samples')">← All Samples</button></div>
+      <div id="sampleItemsGrid" class="sample-items-grid"></div>
+      <div class="project-note">These are demonstration samples created to show approach, formatting and attention to detail. Replace or supplement them with real client-approved work as it becomes available.</div>
+    </section>
+
+    <section id="projectsView" class="page-view">
+      <div class="page-top-bar">
+        <div class="section-header" style="margin:0"><span class="pill">SELECTED CONCEPT WORK</span><h2>Projects <span class="gradient-text">Portfolio</span></h2><p>A collection of distinct website concepts, each designed around a different audience and purpose.</p></div>
+        <button class="btn-ghost tap-sound" type="button" onclick="openPage('samples')">← Back to Samples</button>
+      </div>
+      <div class="project-intro reveal-up">
+        <div><span class="badge"><span class="badge-pulse-dot"></span> DESIGN • BUILD • REFINE</span><h2>Different ideas.<br><span class="gradient-text">Different digital experiences.</span></h2><p>Explore six original front-end concepts covering e-commerce, travel, creative agencies, education, finance and event experiences. Open any project to see its goals, page structure, features and design decisions.</p></div>
+        <div class="project-proof"><div><strong>06</strong><span>Concept projects</span></div><div><strong>18+</strong><span>Planned page views</span></div><div><strong>100%</strong><span>Responsive layouts</span></div></div>
+      </div>
+      <div class="project-filter-row" role="group" aria-label="Filter projects">
+        <button class="project-filter active" data-filter="all" onclick="filterProjects('all',this)">All Projects</button>
+        <button class="project-filter" data-filter="commerce" onclick="filterProjects('commerce',this)">Commerce</button>
+        <button class="project-filter" data-filter="business" onclick="filterProjects('business',this)">Business</button>
+        <button class="project-filter" data-filter="platform" onclick="filterProjects('platform',this)">Platforms</button>
+        <button class="project-filter" data-filter="creative" onclick="filterProjects('creative',this)">Creative</button>
+      </div>
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card reveal-up" data-category="commerce">
+          <div class="project-preview theme-aurora"><div class="preview-window"><div class="preview-top"><span>A U R O R A</span><span class="preview-dots"><i></i><i></i><i></i></span></div><div class="preview-headline">Rituals for<br>radiant skin.</div><div class="preview-sub">Thoughtful skincare. Quiet confidence.</div><div class="preview-pills"><i></i><i></i></div><div class="preview-cards"><i></i><i></i><i></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">E-commerce • Beauty</span><span class="project-number">PROJECT 01</span></div><h3>AURORA — Skincare Store</h3><p>A premium product-shopping experience with editorial storytelling, product discovery and a calm luxury visual identity.</p><div class="project-tags"><span>Home</span><span>Shop</span><span>Product Detail</span><span>Responsive UI</span></div><button class="project-open" onclick="openCaseStudy('aurora')">Explore Case Study <span>↗</span></button></div>
+        </article>
+        <article class="project-card reveal-up" data-category="business">
+          <div class="project-preview theme-north"><div class="preview-window"><div class="preview-top"><span>NORTHSTAR / JOURNEYS</span><span>☼ 24°</span></div><div class="preview-headline">Find your<br>faraway.</div><div class="preview-sub">Curated escapes for curious people.</div><div class="preview-pills"><i></i><i></i></div><div class="preview-cards"><i></i><i></i><i></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">Travel • Hospitality</span><span class="project-number">PROJECT 02</span></div><h3>NORTHSTAR — Travel Studio</h3><p>A destination-led travel website with curated journeys, location storytelling and clear enquiry paths.</p><div class="project-tags"><span>Discover</span><span>Destinations</span><span>Journal</span><span>Enquiry</span></div><button class="project-open" onclick="openCaseStudy('northstar')">Explore Case Study <span>↗</span></button></div>
+        </article>
+        <article class="project-card reveal-up" data-category="creative">
+          <div class="project-preview theme-pixel"><div class="preview-window"><div class="preview-top"><span>PIXELCRAFT®</span><span>INDEPENDENT STUDIO</span></div><div class="preview-headline">Make it<br>matter.</div><div class="preview-sub">Strategy, identity and digital craft.</div><div class="preview-bars"><i style="height:35%"></i><i style="height:72%"></i><i style="height:52%"></i><i style="height:95%"></i><i style="height:64%"></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">Agency • Creative</span><span class="project-number">PROJECT 03</span></div><h3>PIXELCRAFT — Creative Agency</h3><p>A bold studio website that presents services, selected work, process and project enquiries with strong typography.</p><div class="project-tags"><span>Studio</span><span>Work Archive</span><span>Services</span><span>Contact</span></div><button class="project-open" onclick="openCaseStudy('pixelcraft')">Explore Case Study <span>↗</span></button></div>
+        </article>
+        <article class="project-card reveal-up" data-category="platform">
+          <div class="project-preview theme-field"><div class="preview-window"><div class="preview-top"><span>FIELDNOTES / LEARN</span><span>● LIVE CLASS</span></div><div class="preview-headline">Learn at<br>your pace.</div><div class="preview-sub">Practical lessons for lifelong learners.</div><div class="preview-cards"><i></i><i></i><i></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">Education • Platform</span><span class="project-number">PROJECT 04</span></div><h3>FIELDNOTES — Learning Hub</h3><p>An approachable learning platform concept with course discovery, lesson previews and structured learning paths.</p><div class="project-tags"><span>Course Library</span><span>Course Detail</span><span>Lesson View</span><span>Progress UI</span></div><button class="project-open" onclick="openCaseStudy('fieldnotes')">Explore Case Study <span>↗</span></button></div>
+        </article>
+        <article class="project-card reveal-up" data-category="platform">
+          <div class="project-preview theme-civic"><div class="preview-window"><div class="preview-top"><span>CIVIC / OVERVIEW</span><span>•••</span></div><div class="preview-headline">Your money,<br>in focus.</div><div class="preview-sub">A clearer view of everyday finances.</div><div class="preview-bars"><i style="height:42%"></i><i style="height:65%"></i><i style="height:52%"></i><i style="height:90%"></i><i style="height:73%"></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">Dashboard • Finance</span><span class="project-number">PROJECT 05</span></div><h3>CIVIC — Finance Dashboard</h3><p>A data-focused interface concept with account summaries, spending insights, budgeting and transaction history.</p><div class="project-tags"><span>Overview</span><span>Budget Planner</span><span>Transactions</span><span>Charts</span></div><button class="project-open" onclick="openCaseStudy('civic')">Explore Case Study <span>↗</span></button></div>
+        </article>
+        <article class="project-card reveal-up" data-category="creative">
+          <div class="project-preview theme-velora"><div class="preview-window"><div class="preview-top"><span>VELORA / CELEBRATE</span><span>EST. 2026</span></div><div class="preview-headline">A day to<br>remember.</div><div class="preview-sub">A personal invitation experience.</div><div class="preview-pills"><i></i><i></i></div><div class="preview-cards"><i></i><i></i><i></i></div></div></div>
+          <div class="project-card-body"><div class="project-card-meta"><span class="project-category">Events • Experience</span><span class="project-number">PROJECT 06</span></div><h3>VELORA — Event Experience</h3><p>A warm, elegant event microsite with invitation details, schedule, gallery, RSVP interaction and map section.</p><div class="project-tags"><span>Invitation</span><span>Schedule</span><span>Gallery</span><span>RSVP UI</span></div><button class="project-open" onclick="openCaseStudy('velora')">Explore Case Study <span>↗</span></button></div>
+        </article>
+      </div>
+      <div class="project-note">Portfolio transparency: These are original concept/demo projects created to demonstrate design and front-end capabilities. Any dashboard figures, products, destinations and business details shown in the concepts are illustrative, not real client results.</div>
+      <div class="pro-banner reveal-up" style="margin-top:34px"><span class="pill">HAVE A PROJECT IN MIND?</span><h3 style="font-size:1.4rem;margin:10px 0">Let's shape your idea into a clear digital experience.</h3><p>Share the purpose, audience and style you have in mind. We can plan the right pages and features around your requirements.</p><div class="btn-group" style="margin-top:18px"><button class="btn-neon" onclick="openPage('contact')">Contact Me</button><button class="btn-ghost" onclick="openPage('work')">Explore Services</button></div></div>
     </section>
 
     <section id="profileView" class="page-view">
@@ -3651,6 +3869,11 @@
     </section>
   </div>
 
+
+  <div id="caseBackdrop" class="case-backdrop" role="dialog" aria-modal="true" aria-labelledby="caseTitle" onclick="closeCaseStudy(event)">
+    <div class="case-dialog" onclick="event.stopPropagation()"><button class="case-close" type="button" aria-label="Close project details" onclick="closeCaseStudy()">×</button><span class="pill" id="caseCategory">PROJECT CASE STUDY</span><h2 id="caseTitle">Project title</h2><p class="case-lead" id="caseLead"></p><div class="case-detail-grid" id="caseDetails"></div><p class="case-disclaimer">Concept project for portfolio demonstration. Features and content are illustrative; production integrations, payments, authentication or live data connections would be scoped separately.</p></div>
+  </div>
+
   <div id="projectDialog" class="dialog-backdrop" onclick="backdropClose(event)">
     <div class="dialog-shell" onclick="event.stopPropagation()">
       <div class="dialog-box">
@@ -3967,6 +4190,9 @@
 
     const views = {
       home: document.getElementById("homeView"),
+      samples: document.getElementById("samplesView"),
+      sampleCategory: document.getElementById("sampleCategoryView"),
+      projects: document.getElementById("projectsView"),
       skills: document.getElementById("skillsView"),
       work: document.getElementById("workView"),
       profile: document.getElementById("profileView"),
@@ -3974,13 +4200,17 @@
       contact: document.getElementById("contactView")
     };
     const skillsFlipGrid = document.getElementById("skillsFlipGrid");
+    const navSamples = document.getElementById("navSamples");
     const navSkills = document.getElementById("navSkills");
     const navWork = document.getElementById("navWork");
     const navProfile = document.getElementById("navProfile");
     const navContact = document.getElementById("navContact");
     const navRate = document.getElementById("navRate");
     let currentPage = "home";
+    let currentSampleKey = null;
     let switchTimer = null;
+    let navigationSequence = 0;
+    history.replaceState({ page: "home", sampleKey: null }, "", location.pathname + location.search + "#home");
 
     function resetAllSkillFlips() {
       document.querySelectorAll(".skill-flip-scene.flipped").forEach((scene) => {
@@ -4003,19 +4233,28 @@
     }
 
     function setActiveNav(target) {
-      [navSkills, navWork, navContact, navRate, navProfile].forEach((el) => el.classList.remove("active-link"));
-      if (target === "skills") navSkills.classList.add("active-link");
+      [navSamples, navSkills, navWork, navContact, navRate, navProfile].forEach((el) => el.classList.remove("active-link"));
+      if (target === "samples" || target === "sampleCategory" || target === "projects") navSamples.classList.add("active-link");
+      else if (target === "skills") navSkills.classList.add("active-link");
       else if (target === "work") navWork.classList.add("active-link");
       else if (target === "contact") navContact.classList.add("active-link");
       else if (target === "rate") navRate.classList.add("active-link");
       else if (target === "profile") navProfile.classList.add("active-link");
     }
 
-    function openPage(pageName, callback) {
+    function openPage(pageName, callback, options = {}) {
       if (!views[pageName]) pageName = "home";
       resetAllSkillFlips();
+      const fromHistory = options.fromHistory === true;
+      if (!fromHistory) {
+        const nextState = { page: pageName, sampleKey: pageName === "sampleCategory" ? currentSampleKey : null };
+        if (history.state?.page !== pageName || history.state?.sampleKey !== nextState.sampleKey) {
+          history.pushState(nextState, "", location.pathname + location.search + "#" + pageName + (nextState.sampleKey ? "-" + nextState.sampleKey : ""));
+        }
+      }
 
-      if (pageName === "skills") setActiveNav("skills");
+      if (pageName === "samples" || pageName === "sampleCategory" || pageName === "projects") setActiveNav(pageName);
+      else if (pageName === "skills") setActiveNav("skills");
       else if (pageName === "work") setActiveNav("work");
       else if (pageName === "contact") setActiveNav("contact");
       else if (pageName === "rate") setActiveNav("rate");
@@ -4033,7 +4272,9 @@
 
       prevView.classList.remove("visible");
 
+      const thisSequence = ++navigationSequence;
       switchTimer = setTimeout(() => {
+        if (thisSequence !== navigationSequence) return;
         Object.values(views).forEach((v) => {
           v.classList.remove("active", "visible");
         });
@@ -4050,8 +4291,134 @@
             if (callback) callback();
           });
         });
-      }, 170);
+      }, 300);
     }
+
+    // Browser back/forward buttons (and mouse side buttons) navigate between visited views.
+    window.addEventListener("popstate", (event) => {
+      const state = event.state || {};
+      const page = views[state.page] ? state.page : "home";
+      currentSampleKey = state.sampleKey || null;
+      if (page === "sampleCategory" && currentSampleKey && sampleCollections[currentSampleKey]) {
+        const collection = sampleCollections[currentSampleKey];
+        document.getElementById('sampleCategoryEyebrow').textContent = collection.eyebrow;
+        document.getElementById('sampleCategoryTitle').textContent = collection.title;
+        document.getElementById('sampleCategoryIntro').textContent = collection.intro;
+        document.getElementById('sampleItemsGrid').innerHTML = collection.items.map(item => `<article class="sample-item"><span class="sample-label">${item[0]}</span><h3>${item[1]}</h3><p>${item[2]}</p><div class="sample-example">${item[3]}</div><div class="sample-meta">${item[4].map(tag => `<span>${tag}</span>`).join('')}</div></article>`).join('');
+      }
+      openPage(page, null, { fromHistory: true });
+    });
+
+    const sampleCollections = {
+      design:{eyebrow:"VISUAL DESIGN SAMPLES",title:"Graphic Design",intro:"A set of varied visual design directions, each made for a different communication goal.",items:[
+        ["01 / SOCIAL CAMPAIGN","Launch Announcement Graphic","A bold social post concept for announcing a new digital service. The layout gives the headline first priority, uses a compact feature list and keeps the call-to-action clear.",`NOVA DIGITAL
+A NEW WAY TO CREATE
+Design • Build • Launch
+Explore the service →`,["Social media","Campaign layout","Typography"]],
+        ["02 / GAMING COMMUNITY","Tournament Poster","A high-energy esports event poster direction with a strong title hierarchy, match information and a clear date-and-time area.",`NIGHT CLASH
+COMMUNITY CUP
+SQUAD REGISTRATION OPEN
+FINALS • 08:00 PM`,["Gaming","Poster design","Event details"]],
+        ["03 / PROMOTIONAL","Minimal Product Promotion","A clean promotional graphic for a fictional product, designed to keep the product name, key benefit and offer easy to scan.",`PURE FORM
+Everyday essentials. Thoughtfully made.
+INTRO OFFER  •  15% OFF`,["Promotion","Product graphic","Clean layout"]]
+      ]},
+      translation:{eyebrow:"LANGUAGE & SUBTITLE SAMPLES",title:"Translations & Subtitles",intro:"Examples of natural-language adaptation, subtitle cleanup and readable caption formatting.",items:[
+        ["01 / ENGLISH → SINHALA","Short Promotional Translation","A sample translation that prioritises natural Sinhala phrasing and preserves the original message instead of translating word-for-word.",`SOURCE: Discover a simpler way to organise your day.
+SINHALA: ඔබේ දවස වඩාත් පහසුවෙන් සංවිධානය කරගන්න අලුත්ම ක්‍රමයක් අත්විඳින්න.`,["English to Sinhala","Meaning-first","Proofread"]],
+        ["02 / SUBTITLE CLEANUP","Dialogue Subtitle Formatting","A sample of splitting long dialogue into short, readable subtitle lines while keeping the wording clear and consistent.",`00:00:02,000 --> 00:00:04,200
+The journey begins with one small decision.
+
+00:00:04,500 --> 00:00:06,800
+Keep moving, one step at a time.`,["SRT formatting","Line breaks","Consistency"]],
+        ["03 / CAPTION REVIEW","Subtitle Quality Check","A sample quality-control pass focused on spelling, punctuation, speaker consistency and timing readability.",`CHECKLIST
+✓ Spelling and punctuation
+✓ Consistent names and terms
+✓ Comfortable reading speed
+✓ Clean line breaks
+✓ Timing and sequence review`,["Subtitle review","Quality check","Formatting"]]
+      ]},
+      data:{eyebrow:"DATA ORGANISATION SAMPLES",title:"Data Entry",intro:"Demonstrations of structured data entry, spreadsheet cleanup and product information organisation.",items:[
+        ["01 / SPREADSHEET","Contact List Cleanup","A fictional contact list converted into a consistent table format, with standardised names, phone formatting and clear column headings.",`NAME          | EMAIL                 | STATUS
+Alex Perera   | alex@example.test     | Active
+N. Silva      | nsilva@example.test   | Pending
+R. Fernando  | rfernando@example.test| Active`,["Excel / Sheets","Data cleaning","Consistency"]],
+        ["02 / PRODUCT CATALOGUE","Online Store Product Entry","A sample product catalogue row showing consistent product naming, category, SKU, price field and short description structure.",`SKU: HOME-104
+PRODUCT: Ceramic Desk Planter
+CATEGORY: Home & Living
+PRICE: 24.00 (illustrative)
+STATUS: In stock
+NOTE: Fictional catalogue entry`,["Product listing","Structured fields","Accuracy"]],
+        ["03 / DATA FORMATTING","整理 / Duplicate Review","A sample cleanup workflow showing how repeated records and inconsistent date formats can be flagged before final entry.",`REVIEW STEPS
+1. Standardise date format (YYYY-MM-DD)
+2. Check repeated reference IDs
+3. Keep required fields complete
+4. Flag unclear values for review
+5. Verify row count after cleanup`,["Data formatting","Duplicate checks","Quality review"]]
+      ]},
+      brand:{eyebrow:"BRAND VISUAL SAMPLES",title:"Logos & Thumbnails",intro:"Different identity and thumbnail directions for creator channels, gaming communities and small digital brands.",items:[
+        ["01 / CREATOR IDENTITY","Creator Channel Identity","A compact visual identity direction using a strong wordmark, a simple emblem and a limited accent palette for consistent use across platforms.",`SPACENVRDIE
+CREATOR • GAMING • DIGITAL
+Identity direction: bold / minimal / tech`,["Wordmark","Creator branding","Visual system"]],
+        ["02 / VIDEO THUMBNAIL","Gaming Video Thumbnail","A thumbnail layout concept that separates the main subject, short hook and game context to remain readable at small screen sizes.",`THE FINAL CHALLENGE
+GAMEPLAY • EPISODE 01
+High-contrast title / clear focal point`,["YouTube","Gaming","Thumbnail layout"]],
+        ["03 / COMMUNITY MARK","Gaming Clan Emblem","A badge-style identity concept with a distinct name treatment and a simplified icon that can scale down for profile use.",`NIGHT WOLVES
+ACTIVE • DISCIPLINE • WAR FOCUSED
+Emblem concept`,["Gaming clan","Badge","Logo concept"]]
+      ]},
+      content:{eyebrow:"DOCUMENT & CONTENT SAMPLES",title:"Document & Content Formatting",intro:"Examples of turning rough information into clean, structured and easy-to-read content.",items:[
+        ["01 / DOCUMENT LAYOUT","One-Page Service Overview","A simple service sheet structure with a clear title, short introduction, grouped features and contact section.",`SERVICE OVERVIEW
+What is included
+• Clear project requirements
+• Structured delivery
+• Revision notes
+Contact / next steps`,["Document formatting","Hierarchy","Readable layout"]],
+        ["02 / PRODUCT COPY","Product Description Cleanup","A fictional product description rewritten into a concise, scannable listing with benefits and key specifications.",`Everyday Desk Lamp
+A compact desk lamp designed for focused work and comfortable evening reading.
+Features: adjustable neck • touch control • USB power`,["Product descriptions","Editing","Content structure"]],
+        ["03 / CONTENT ORGANISATION","Information to Clean Sections","A sample of grouping unstructured notes into logical headings and short sections without changing the intended information.",`OVERVIEW  →  KEY DETAILS  →  REQUIREMENTS
+PROCESS  →  DELIVERY  →  FAQ
+A clear structure makes information easier to scan.`,["Content formatting","Organisation","Proofreading"]]
+      ]}
+    };
+    function openSampleCategory(key){
+      const collection=sampleCollections[key]; if(!collection)return;
+      currentSampleKey = key;
+      document.getElementById('sampleCategoryEyebrow').textContent=collection.eyebrow;
+      document.getElementById('sampleCategoryTitle').innerHTML=collection.title.replace('&','&amp;');
+      document.getElementById('sampleCategoryIntro').textContent=collection.intro;
+      document.getElementById('sampleItemsGrid').innerHTML=collection.items.map(item=>`<article class="sample-item"><span class="sample-label">${item[0]}</span><h3>${item[1]}</h3><p>${item[2]}</p><div class="sample-example">${item[3]}</div><div class="sample-meta">${item[4].map(tag=>`<span>${tag}</span>`).join('')}</div></article>`).join('');
+      openPage('sampleCategory');
+    }
+
+    const caseStudies = {
+      aurora:{category:"E-COMMERCE / BEAUTY",title:"AURORA — Skincare Store",lead:"A premium storefront concept designed to make product discovery feel calm, clear and considered.",details:[["Project goal","Create a refined shopping experience for a skincare brand, balancing editorial storytelling with practical product browsing."],["Page structure","Home / Shop / Product detail / Brand story / FAQ and support."],["Key interactions","Category filtering, product quick views, quantity controls, cart drawer concept, wishlist states and responsive product grids."],["Design direction","Warm neutrals, muted rose tones, generous whitespace, tactile cards and editorial product photography placeholders."],["Responsive approach","Single-column product flow on phones, compact filter controls and touch-friendly cart actions; expanded discovery layout on desktop."],["Build notes","Front-end concept using semantic HTML, CSS layout systems and lightweight JavaScript state. Checkout/payment connection is not included."]]},
+      northstar:{category:"TRAVEL / HOSPITALITY",title:"NORTHSTAR — Travel Studio",lead:"A destination-first travel website that helps visitors discover places and understand the journey before enquiring.",details:[["Project goal","Present curated travel experiences with strong visual storytelling and a clear path to ask for trip details."],["Page structure","Home / Destinations / Destination detail / Travel journal / About / Enquiry."],["Key interactions","Destination filters, itinerary accordion, date and traveller enquiry fields, journal cards and mobile navigation."],["Design direction","Oceanic teal, deep navy, large landscape imagery, map-inspired details and calm typography."],["Responsive approach","Image-led stacked destination cards on mobile; split editorial layouts and wider destination grids on desktop."],["Build notes","Front-end concept only. Live booking inventory, maps API and payment services would require separate integrations."]]},
+      pixelcraft:{category:"CREATIVE AGENCY / BUSINESS",title:"PIXELCRAFT — Creative Agency",lead:"A confident agency presence built to explain capabilities, showcase selected work and convert interest into enquiries.",details:[["Project goal","Give a small creative studio a polished online identity and a clear way to present its services and portfolio."],["Page structure","Home / Services / Work archive / Case study / Studio / Contact."],["Key interactions","Project category filters, animated service cards, case study navigation, contact form validation and mobile menu."],["Design direction","Expressive typography, warm coral accents, dark plum surfaces and bold asymmetric composition."],["Responsive approach","Editorial stacked layouts on mobile; multi-column work archive and wider hero composition on desktop."],["Build notes","Designed as a front-end agency concept. Contact form requires a backend or form service for real submissions."]]},
+      fieldnotes:{category:"EDUCATION / PLATFORM",title:"FIELDNOTES — Learning Hub",lead:"A welcoming learning platform concept that makes course discovery and lesson navigation feel straightforward.",details:[["Project goal","Organise courses and learning paths so visitors can understand what they will learn before starting."],["Page structure","Home / Course catalogue / Course detail / Lesson player / Learning dashboard / Help."],["Key interactions","Course search and filters, lesson list, progress indicators, bookmark state and expandable lesson resources."],["Design direction","Natural greens, parchment-inspired surfaces, readable typography and calm study-focused spacing."],["Responsive approach","Compact course rows and sticky lesson navigation on mobile; dashboard panels and course grids on larger screens."],["Build notes","Demonstration interface only. Real accounts, saved progress and video hosting need secure backend services."]]},
+      civic:{category:"FINANCE / DASHBOARD",title:"CIVIC — Finance Dashboard",lead:"A clean dashboard concept for understanding everyday spending, planning a budget and reviewing activity.",details:[["Project goal","Turn financial information into a readable overview with clear priorities and useful summaries."],["Page structure","Overview / Budget planner / Transactions / Spending insights / Account settings."],["Key interactions","Date range selection, category filters, budget progress bars, transaction search and chart tooltips."],["Design direction","Trustworthy blue palette, high-contrast data labels, structured cards and restrained visual emphasis."],["Responsive approach","Prioritised summary cards and scrollable transaction list on phones; full dashboard grid on desktop."],["Build notes","All sample figures are fictional. No bank connection, financial advice, or live transaction processing is provided."]]},
+      velora:{category:"EVENTS / INTERACTIVE EXPERIENCE",title:"VELORA — Event Experience",lead:"A personal event microsite that brings invitation details, schedule and RSVP information into one shareable place.",details:[["Project goal","Make event information easy to find and enjoyable to explore for guests on any device."],["Page structure","Welcome / Event details / Schedule / Gallery / Venue / RSVP / FAQ."],["Key interactions","Countdown display, schedule timeline, gallery lightbox, RSVP form validation and add-to-calendar link concept."],["Design direction","Soft rose and plum palette, elegant typography, warm photography placeholders and subtle motion."],["Responsive approach","Thumb-friendly RSVP actions and stacked schedule on mobile; immersive gallery and split sections on desktop."],["Build notes","RSVP is a front-end demonstration. Guest-list storage, email notifications and calendar integrations require setup."]]}
+    };
+    function openCaseStudy(key){
+      const item=caseStudies[key]; if(!item)return;
+      document.getElementById("caseCategory").textContent=item.category;
+      document.getElementById("caseTitle").textContent=item.title;
+      document.getElementById("caseLead").textContent=item.lead;
+      document.getElementById("caseDetails").innerHTML=item.details.map(([heading,body])=>`<article class="case-detail"><h4>${heading}</h4><p>${body}</p></article>`).join("");
+      document.getElementById("caseBackdrop").classList.add("active");
+      document.body.style.overflow="hidden";
+    }
+    function closeCaseStudy(event){
+      if(event && event.target!==document.getElementById("caseBackdrop"))return;
+      document.getElementById("caseBackdrop").classList.remove("active");
+      document.body.style.overflow="";
+    }
+    function filterProjects(category,button){
+      document.querySelectorAll(".project-filter").forEach(el=>el.classList.toggle("active",el===button));
+      document.querySelectorAll(".project-card").forEach(card=>{card.hidden=category!=="all"&&card.dataset.category!==category;});
+    }
+    document.addEventListener("keydown",event=>{if(event.key==="Escape")closeCaseStudy();});
 
     let selectedWebsiteRating = 0;
     document.querySelectorAll(".rating-choice").forEach((button) => {
@@ -4228,13 +4595,19 @@
         skillsText,
         notes,
         message:
-          `Hi Tharaka! I'm ${name}.
-` +
-          `Order: ${title}
-` +
-          `Skills: ${skillsText}
-` +
-          `Details: ${notes}`
+          `Hello Tharaka!\n\n` +
+          `I would like to place an order.\n\n` +
+          `━━━━━━━━━━━━━━━━━━\n` +
+          `ORDER DETAILS\n` +
+          `━━━━━━━━━━━━━━━━━━\n\n` +
+          `👤 Name: ${name}\n` +
+          `📦 Service / Pack: ${title}\n` +
+          `🛠️ Required Skills: ${skillsText}\n\n` +
+          `📝 PROJECT DETAILS\n` +
+          `${notes}\n\n` +
+          `━━━━━━━━━━━━━━━━━━\n` +
+          `Please let me know the next steps.\n` +
+          `Thank you!`
       };
     }
 
